@@ -3,7 +3,7 @@ import symptoms_service from "../services/symptoms-service.js"
 let diagnosisView = {
 
     show: (jasonFile)=>{
-        
+    
         $("#disease-name").empty();
         $("#disease-name").append(
             `${jasonFile.Issue.Name}`
@@ -25,7 +25,7 @@ let diagnosisView = {
             `${jasonFile.Specialisation[0].Name}`
         );
         $("#doc-2").empty();
-        
+
         if(jasonFile.Specialisation.length() >1){
         $("#doc-2").append(
             `${jasonFile.Specialisation[1].Name}`
