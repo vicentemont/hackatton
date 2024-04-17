@@ -61,10 +61,17 @@ let symptoms_service = {
     },
 
     fetchIcon: async (symptom) =>{
-       let symptom= fetchSymptoms();
-       
+    
+       separatedSymptom= String(symptom).split(" ");
+       separatedSymptom.forEach(element => {
+           urlSymptom="";
+           urlSymptom= urlSymptom + "%20" + element;
+       })
+       return urlSymptom;
         
-       const iconApi= `https://api.thenounproject.com/v2/icon?query=${symptom.name}`
+        const iconApi= `https://api.thenounproject.com/v2/icon?query=${urlSymptom}`;
+
+        
     }
 }
 
