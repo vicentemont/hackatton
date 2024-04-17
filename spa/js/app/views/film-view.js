@@ -11,7 +11,31 @@ function createButton(text = "CLICK HERE!") {
 
 // a function to create a film card, which is the html code for a single film
 function createFilmCard({ Title, Year, Director, imdbRating,Type,Country, Genre, Poster}) {
-  return ``
+  return `<div id="gameCard" class="container">
+  <div id="movieTitle">
+    ${Title}
+  </div>
+  <div id="movieDetails" >
+  <div id="imdb" class="movieDetail"> IMDB: ${imdbRating} 
+
+  </div>
+  <div id="country" class="movieDetail"> YEAR: ${Country} 
+    
+  </div>
+  <div id="director" class="movieDetail"> DIRECTOR: ${Director} 
+    
+  </div>
+  <div id="movieYear" class="movieDetail"> POSTER: ${Year}
+    
+  </div>
+  <div id="genre" class="movieDetail"> ${Genre} 
+    
+  </div>
+  <div id="movieCategory" class="movieDetail"> ${Type} 
+    
+  </div>
+</div>
+ </div>`
 }
 
 // a function to render a single film, cleaning any previous film card 

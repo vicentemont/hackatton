@@ -6,33 +6,3 @@
     padding: 10px;
     border: 2px solid #4CAF50;
 }
-
-.main-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.symptomsContainer {
-    display: grid;
-    grid-template-columns: repeat(6, auto);
-    grid-gap: 10px;
-    grid-auto-flow: dense
-}
-
-.symptom {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    /* Ensure the circle shape */
-    background-color: white;
-    width: 60px;
-    height: 60px;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.332);
-}
-
-.symptom img {
-    height: 40px;
-}

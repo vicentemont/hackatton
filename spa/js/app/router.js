@@ -1,7 +1,7 @@
 import { routes } from "./routes.js";
 
 // just a name for a default route, corresponding to one of the routes keys, for when the shit hits the fan
-const defaultRoute = "symptoms";
+const defaultRoute = "film";
 
 // a listener to listen for hashchange. "hashchange" is a existing window event
 window.addEventListener("hashchange", hashchangeHandler, true);
@@ -32,7 +32,6 @@ async function loadController(controllerName) {
 
 // start the router setting and loading the default router.
 export function start() {
-  
   location.hash = routes[defaultRoute].hash;
   loadController(routes[defaultRoute].controller);
 }
