@@ -21,6 +21,13 @@
     grid-auto-flow: dense
 }
 
+#app {
+    width: 350px;
+    height: 350px;
+    background-color: #000000;
+    border-radius: 20px;
+}
+
 .symptom {
     display: flex;
     justify-content: center;
@@ -31,6 +38,86 @@
     width: 60px;
     height: 60px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.332);
+}
+
+#searchSection {
+    padding: 20px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0px;
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: white;
+    border-color: #d71b1b;
+    border-width: 3px;
+
+}
+
+#searchBar {
+    width: 300px;
+    height: 30px;
+    border-radius: 15px;
+    border-style: solid;
+    padding-left: 10px;
+    margin: 0px;
+    margin-bottom: 0px;
+    border-color: #cecece;
+    border-width: 2px;
+    background-color: white;
+
+}
+
+.suggestion:hover {
+    background-color: #ededed;
+}
+
+.symptomsCue {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    font-weight: 500;
+    color: white;
+    font-size: large;
+}
+
+.symptomsCue>* {
+    margin-left: 10px;
+    /* Adjust the margin value as needed */
+}
+
+.symptomBall {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    background-color: #4CAF50;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+
+.suggestion {
+    height: 30px;
+    width: 300px;
+    margin: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    /* Change display property to block */
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: white;
+}
+
+#suggestionsContainer {
+    margin-top: 5px;
+
 }
 
 .symptom img {
