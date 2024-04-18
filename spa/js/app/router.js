@@ -1,7 +1,7 @@
 import { routes } from "./routes.js";
 
 // just a name for a default route, corresponding to one of the routes keys, for when the shit hits the fan
-const defaultRoute = "film";
+const defaultRoute = "route2";
 
 // a listener to listen for hashchange. "hashchange" is a existing window event
 window.addEventListener("hashchange", hashchangeHandler, true);

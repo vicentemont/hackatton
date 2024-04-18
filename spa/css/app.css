@@ -6,3 +6,51 @@
     padding: 10px;
     border: 2px solid #4CAF50;
 }
+* {
+    cursor: none;
+}
+
+.cursor {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+    /*Keeps our custom cursor on the user's screen*/
+    position: fixed;
+    pointer-events: none;
+    /*makes sure the background images will sort of fit the cursor*/
+    background-size: cover; 
+    transition: scale 300ms;
+}
+
+.cursorGrow {
+scale: 8;
+}
+map > div:not(div:nth-child(5)) {
+    border-bottom: solid ;
+}
+
+@media (max-width: 480px) {
+    map {
+        font-size: 4.8rem;
+    }
+}
+
+.arms {
+background-image: url('https://sa1s3optim.patientpop.com/assets/images/provider/photos/2512976.jpg');
+}
+.legs {
+background-image: url('https://assets-global.website-files.com/6419c6455bd31b5d09bbe049/6425ed7d6a78de6fc954464e_leg-pain-xray.jpeg');
+}
+.chest {
+background-image: url('https://www.decrescenzochiropractic.com/wp-content/uploads/Chiropractic-East-Providence-RI-Chest-Pain.jpg');
+}
+.abdomen {
+background-image: url('https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/19-abdominal-pain-sebastian-kaulitzkiscience-photo-library.jpg');
+}
+.joints {
+background-image: url('https://domf5oio6qrcr.cloudfront.net/medialibrary/9110/iStock-592655170.jpg');
+}
+.head {
+background-image: url('https://www.pyrexar.com/images/head-neck-3d.jpg');
+}
