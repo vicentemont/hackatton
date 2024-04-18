@@ -1,0 +1,106 @@
+
+.welcomeScreen{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcomeScreen button{
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+    border-style: none;
+    background-color: #ec9a29;
+    color: white;
+    font-weight: bold;
+    font-size: larger;
+
+} 
+
+.welcomeScreen img{
+margin-bottom: 150px;
+}
+
+.welcomeQuote {
+    padding-bottom: 200px;
+}
+
+
+.diagnosis{
+    display: flex;
+    flex-direction: column;
+    color: black;
+    margin: 10px;
+    color: white;
+    font-size: larger;
+    
+}
+
+.lastRow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#disease-name{
+    text-align: center;
+    padding: 15px;
+    font-size: x-large;
+    font-weight: bold;
+    border-radius: 15px;
+    margin: 8px;
+
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+}
+
+.logo img{
+    margin-top: 0px;
+}
+
+#chance{
+    text-align: start;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    background-color:#ffffff7d;
+    color: black;
+    margin: 8px;
+}
+
+#icd-name{
+    text-align:start;
+    padding: 15px;
+    border-radius: 15px;
+    color: black;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    background-color:#ffffff7d;   
+     margin: 8px;
+}
+
+#icd-number{
+    padding-top: 30px;
+    text-align: center;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 70px;
+    height: 100px;
+    border-radius: 15px;
+    font-size: small;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    background-color:#a8201a;
+    margin: 8px;
+}
+
+#doc-1{
+    text-align: center;
+    padding: 15px;
+    border-radius: 15px;
+    font-size:medium;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    background-color:#ec9a29;
+    margin: 8px;
+}

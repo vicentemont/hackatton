@@ -1,3 +1,4 @@
+import diagnosisView from "./views/diagnosisView.js"
 export const routes = {
     // film route
     film: {
@@ -8,4 +9,13 @@ export const routes = {
         hash: "#symptoms",
         controller: "symptoms-controller",
     },
+    diagnosis: {
+        hash: "#diagnosis",
+        view: diagnosisView,
+    },
+    home: {
+        hash: "#home",
+        view: "home-view",
+        controller: "home-controller"
+    }
 };

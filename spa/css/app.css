@@ -7,7 +7,6 @@
 
 .simple-button {
     padding: 10px;
-    
     background-color: #EC9A29;
     border-style: none;
     margin-bottom: 20px;
@@ -21,8 +20,10 @@
 
 .main-container {
     display: flex;
-    justify-content: center;
+    justify-content:start;
+    flex-direction: column;
     align-items: center;
+    padding-top: 230px;
     height: 100vh;
 }
 
@@ -36,8 +37,8 @@
 #app {
     padding-top: px;
     width: 350px;
-    
-background-color: #0F8B8D;
+    min-height: 450px;
+    background-color: #0F8B8D;
     border-radius: 20px;
     display: flex;
     justify-content: start;

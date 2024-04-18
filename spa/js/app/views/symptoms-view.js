@@ -1,20 +1,19 @@
 import symptoms_service from "../services/symptoms-service.js";
+import { routes } from "../routes.js";
 
 // the point of separating elements from their handlers is flexibility
 // I may want elements without any handling functions
 // and I may want handlers that are shared by multiple elements
-const elements = {};
+export let elements = {};
 const handlers = {};
+export let selectedSymptoms= [];
 
-let imgSrc = 'https://healthicons.org/icons/svg/filled/conditions/vomiting.svg'
+
+
 
 // a function to create a single button with some inner text
 function createButton(text) {
     return `<button class="simple-button">${text}</button>`;
-}
-
-function createSymptomsContainer() {
-    return '<div class="symptomsContainer"></div>'
 }
 
 function createInput(idName) {
@@ -22,22 +21,22 @@ function createInput(idName) {
 }
 
 function createSymptomsCue() {
-    return `<div class="symptomsCue"><div id="clearList" class="symptomBall" style="background-color: #A8201A;">&#10005;</div></div>`
+    return `<div class="symptomsCue"><div id="clearList" class="symptomBall" style="background-color: white; color:#a8201a;">&#10005;</div></div>`
 }
 
 function createSymptomBall(symptomName) {
-    let getFirstLetters = function (symptomName) {
+    function getFirstLetters(symptomName) {
         // Split the input string into an array of words
         const words = symptomName.split(' ');
         // Initialize an empty string to store the first letters
-        let firstLetters = "";
-        // Iterate over each word in the array
-        words.forEach(word => {
-            // Extract the first letter of each word and append it to the firstLetters string
-            firstLetters += word.charAt(0);
-        });
-        // Return the concatenated firstLetters string
-        return firstLetters.toUpperCase();
+        let firstAndLastLetters = "";
+        // Add the first letter of the first word
+        firstAndLastLetters += words[0].charAt(0);
+        // Add the first letter of the last word
+        const lastWordIndex = words.length - 1;
+        firstAndLastLetters += words[lastWordIndex].charAt(0);
+        // Return the concatenated firstAndLastLetters string
+        return firstAndLastLetters.toUpperCase();
     }
     let letters = getFirstLetters(symptomName);
     return `<div class="symptomBall">${letters}</div>`
@@ -66,12 +65,18 @@ function createSuggestions(suggestionsObj) {
 function renderButton(buttonText){
     elements["getDiagnoseButton"] = $(createButton(buttonText));
     elements.app.append(elements["getDiagnoseButton"]);
+    elements["getDiagnoseButton"].on('click', () =>{
+        let json= symptoms_service.fetchDiagnosis(selectedSymptoms,"female","45");
+        json.then((result)=> routes.diagnosis.view.show(result));
+    } )
+
     console.log(elements["getDiagnose"]);
 }
 
 function renderSearchBar(eventName) {
     // checking if the element already exists OR if there is no handler with that name (just because I don't want to render a button without a handler)
     if (elements[eventName] || !handlers[eventName]) {
+        console.log("already has sb")
         return;
     }
 
@@ -116,14 +121,15 @@ function renderSuggestions(suggestionsObj) {
         if (!elements["symptomsCue"] || elements["symptomsCue"].innerHTML === "") {
             console.log("entered here")
             elements["symptomsCue"] = $(createSymptomsCue())
-
             
             elements.app.prepend(elements["symptomsCue"]);
-
+            
            renderButton("Get Diagnose");
 
-        }
 
+        }
+        selectedSymptoms.push(suggestionId);
+        console.log(selectedSymptoms);
         elements[suggestionText] = $(createSymptomBall(suggestionText));
         elements["symptomsCue"].append(elements[suggestionText]);
         if (elements.counter) {
@@ -150,6 +156,7 @@ function renderSuggestions(suggestionsObj) {
         elements["getDiagnoseButton"].remove();
         delete elements["getDiagnoseButton"];
         elements.app.find('#searchBar').nextAll().remove();
+        selectedSymptoms = [];
     })
     elements.app.find('#searchBar').nextAll().remove();
     elements.app.find('#searchSection').append(elements.suggestions);
@@ -168,6 +175,6 @@ export function render(data) {
     renderSuggestions(data);
     console.log('render')
     renderSearchBar('fetchSymptoms');
-
+    console.log('render1')
 
 }
