@@ -1,10 +1,22 @@
+
+
+
 .container {
     margin: 20px;
 }
 
 .simple-button {
     padding: 10px;
-    border: 2px solid #4CAF50;
+    
+    background-color: #EC9A29;
+    border-style: none;
+    margin-bottom: 20px;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 30px;
+    position: relative;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.332);
 }
 
 .main-container {
@@ -22,10 +34,16 @@
 }
 
 #app {
+    padding-top: px;
     width: 350px;
-    height: 350px;
-    background-color: #000000;
+    
+background-color: #0F8B8D;
     border-radius: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.332);
 }
 
 .symptom {
@@ -38,6 +56,7 @@
     width: 60px;
     height: 60px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.332);
+    
 }
 
 #searchSection {
@@ -52,9 +71,25 @@
     background-color: white;
     border-color: #d71b1b;
     border-width: 3px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.332);
+
 
 }
+::-webkit-scrollbar {
+    width: 10px; /* Width of the entire scrollbar */
+    border-radius: 10px;
+}
 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scroll handle */
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scroll handle on hover */
+}
 #searchBar {
     width: 300px;
     height: 30px;
@@ -65,37 +100,57 @@
     margin-bottom: 0px;
     border-color: #cecece;
     border-width: 2px;
-    background-color: white;
-
+    background-color: rgb(232, 232, 232);
+    border-style: none;
 }
+
+#searchBar:focus {
+    border: red; /* Set the border color to red when focused */
+    /* Add other styles as needed */
+}
+
 
 .suggestion:hover {
     background-color: #ededed;
 }
 
 .symptomsCue {
+    margin-top: 30px;
+    padding-right: 10px;
+    width: 280px;
+    height: 50px;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
     justify-content: flex-start;
     font-weight: 500;
     color: white;
     font-size: large;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scrollbar-width: none;
+    
+}
+
+
+
+/* Hide the scrollbar */
+.symptomsCue::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar for WebKit (Chrome, Safari, etc.) */
 }
 
 .symptomsCue>* {
     margin-left: 10px;
+    
     /* Adjust the margin value as needed */
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.332);
 }
 
 .symptomBall {
     display: flex;
     justify-content: center;
     align-items: center;
-
     text-align: center;
-    background-color: #4CAF50;
-    width: 40px;
+    background-color: #ec9a29;
+    min-width: 40px;
     height: 40px;
     border-radius: 50px;
 }

@@ -8,6 +8,7 @@ import symptoms_service from "../services/symptoms-service.js";
 function bindEventHandlers() {
   bind("getSymptomBall", getSymptomBallHandler);
   bind("fetchSymptoms", fetchSymptomsHandler);
+  bind("fetchAssociatedSymptoms", fetchAssociatedSymptomsHandler);
   render();
 }
 
@@ -21,10 +22,14 @@ async function fetchSymptomsHandler() {
   const suggestions = await symptoms_service.fetchSymptoms(input);
   render(suggestions);
   suggestions;
-  
-
 }
 
+async function fetchAssociatedSymptomsHandler(){
+  const input = $('#searchBar').val();
+  const suggestions = await symptoms_service.fetchAssociatedSymptoms(input);
+  render(suggestions);
+  suggestions;
+}
 
 // do the binding for the getFilmHandler
 // and start the controller, triggering render first time, without a film argument

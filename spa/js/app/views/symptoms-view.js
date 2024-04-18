@@ -17,13 +17,12 @@ function createSymptomsContainer() {
     return '<div class="symptomsContainer"></div>'
 }
 
-// a function to create a single button with some inner text
 function createInput(idName) {
     return `<div id="${idName}" class="container"><input autocomplete="off" type="search" id="searchBar" class="container" placeholder="Search Symptom..."></div>`;
 }
 
 function createSymptomsCue() {
-    return `<div class="symptomsCue"></div>`
+    return `<div class="symptomsCue"><div id="clearList" class="symptomBall" style="background-color: #A8201A;">&#10005;</div></div>`
 }
 
 function createSymptomBall(symptomName) {
@@ -43,9 +42,7 @@ function createSymptomBall(symptomName) {
     let letters = getFirstLetters(symptomName);
     return `<div class="symptomBall">${letters}</div>`
 }
-// gets a JSON obj and creates suggestions below searchBar
-// gets a JSON obj and creates suggestions below searchBar
-// Function to create HTML suggestions based on an array of symptom objects
+
 function createSuggestions(suggestionsObj) {
     if (suggestionsObj) {
         console.log('building html' + suggestionsObj[0].Name)
@@ -53,7 +50,7 @@ function createSuggestions(suggestionsObj) {
         let count = 0; // Counter to track the number of suggestions added
         suggestionsObj.forEach(element => {
             if (count < 5) { // Limit to 5 suggestions
-                suggestionsHTML += `<div class="suggestion" symptomsId="${element.ID}">${element.Name}</div>`;
+                suggestionsHTML += `<div class="suggestion" symptoms-id="${element.ID}">${element.Name}</div>`;
                 count++;
             } else {
                 return; // Exit the loop once 5 suggestions are added
@@ -65,7 +62,13 @@ function createSuggestions(suggestionsObj) {
         return '';
     }
 }
-// adds EventListeners to searchBar element
+
+function renderButton(buttonText){
+    elements["getDiagnoseButton"] = $(createButton(buttonText));
+    elements.app.append(elements["getDiagnoseButton"]);
+    console.log(elements["getDiagnose"]);
+}
+
 function renderSearchBar(eventName) {
     // checking if the element already exists OR if there is no handler with that name (just because I don't want to render a button without a handler)
     if (elements[eventName] || !handlers[eventName]) {
@@ -85,7 +88,7 @@ function renderSearchBar(eventName) {
             // Wait for the response of handlers[eventName](inputValue)
             console.log('aqui')
             suggestions = await handlers[eventName](inputValue);
-            console.log('suggestions are:', suggestions);
+
             // Any code that relies on suggestions should go here
         } catch (error) {
             // Handle any errors that occur during the asynchronous operation
@@ -103,14 +106,22 @@ function renderSearchBar(eventName) {
 function renderSuggestions(suggestionsObj) {
     let suggestions = createSuggestions(suggestionsObj);
     elements.suggestions = $(suggestions);
-    elements.suggestions.on('click', function (event) {
+    let associatedSuggestions;
+    elements.suggestions.on('click', async function (event) {
+        console.log("ENTERED FUNCTION!!!!")
         // Get the text of the clicked suggestion
         const suggestionText = $(event.target).text();
-        const suggestionId = $(event.target).attr('symptomsId');
+        const suggestionId = $(event.target).attr("symptoms-id");
         console.log(suggestionId);
-        if (!elements["symptomsCue"]) {
+        if (!elements["symptomsCue"] || elements["symptomsCue"].innerHTML === "") {
+            console.log("entered here")
             elements["symptomsCue"] = $(createSymptomsCue())
+
+            
             elements.app.prepend(elements["symptomsCue"]);
+
+           renderButton("Get Diagnose");
+
         }
 
         elements[suggestionText] = $(createSymptomBall(suggestionText));
@@ -123,15 +134,23 @@ function renderSuggestions(suggestionsObj) {
         elements.app.find('#searchBar').val(suggestionText);
         elements.app.find('#suggestionsContainer').empty();
         elements.app.find('#searchBar').nextAll().remove();
+        console.log("suggestion id is: " + suggestionId)
+        associatedSuggestions = await symptoms_service.fetchAssociatedSymptoms(suggestionId);
 
-        let associatedSuggestions = symptoms_service.fetchAssociatedSymptoms(suggestionId);
-
-        if(associatedSuggestions){
+        if (associatedSuggestions) {
             console.log(associatedSuggestions)
             renderSuggestions(associatedSuggestions);
         }
 
     });
+    elements.app.find("#clearList").on('click', () => {
+        elements["symptomsCue"].remove();
+        delete elements["symptomsCue"];
+        associatedSuggestions = null;
+        elements["getDiagnoseButton"].remove();
+        delete elements["getDiagnoseButton"];
+        elements.app.find('#searchBar').nextAll().remove();
+    })
     elements.app.find('#searchBar').nextAll().remove();
     elements.app.find('#searchSection').append(elements.suggestions);
 
@@ -139,34 +158,16 @@ function renderSuggestions(suggestionsObj) {
 
 
 
-// a function to render the button, creating a new one if it doesn't exist
-// binding it to the "click" event
-// and appending it to the "app" element
-function renderButton(eventName, buttonText) {
-    // checking if the element already exists OR if there is no handler with that name (just because I don't want to render a button without a handler)
-    if (elements[eventName] || !handlers[eventName]) {
-        return;
-    }
-
-    elements[eventName] = $(createButton(buttonText));
-    elements[eventName].click(handlers[eventName]);
-    elements.app.append(elements[eventName]);
-}
-
-// an exposed function for the service to give us a handler function to bind to an event
 export function bind(eventName, handler) {
     handlers[eventName] = handler;
 }
 
-// the render function, which will trigger the rendering of the button firstly
-// in this version, this is the function where one decides what will be rendered
 export function render(data) {
     elements.app = $("#app");
     console.log('data is: ' + data)
     renderSuggestions(data);
     console.log('render')
-    let suggestions = renderSearchBar('fetchSymptoms');
-    console.log('suggestions ::::' + suggestions)
-    console.log('franlucio')
+    renderSearchBar('fetchSymptoms');
+
 
 }
