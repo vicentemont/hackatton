@@ -1,4 +1,5 @@
 import { bind, render } from "../views/symptoms-view.js";
+import symptoms_service from "../services/symptoms-service.js";
 //import { getSymptomBall } from "../services/symptoms-service.js";
 
 // binds a handler function to a given event name
@@ -6,12 +7,28 @@ import { bind, render } from "../views/symptoms-view.js";
 // this means that the "getFilm" must be used both for the handler name AND button element name.
 function bindEventHandlers() {
   bind("getSymptomBall", getSymptomBallHandler);
+  bind("fetchSymptoms", fetchSymptomsHandler);
+  bind("fetchAssociatedSymptoms", fetchAssociatedSymptomsHandler);
+  render();
 }
 
-// a function to get a random film and render it. 
-//Notice that getFilm is a service function while render is a view function.
+
 function getSymptomBallHandler() {
   render(getSymptomBall());
+}
+
+async function fetchSymptomsHandler() {
+  const input = $('#searchBar').val();
+  const suggestions = await symptoms_service.fetchSymptoms(input);
+  render(suggestions);
+  suggestions;
+}
+
+async function fetchAssociatedSymptomsHandler(){
+  const input = $('#searchBar').val();
+  const suggestions = await symptoms_service.fetchAssociatedSymptoms(input);
+  render(suggestions);
+  suggestions;
 }
 
 // do the binding for the getFilmHandler
@@ -20,5 +37,5 @@ export function start() {
 
   bindEventHandlers();
   console.log('here')
-  render();
+  
 }
