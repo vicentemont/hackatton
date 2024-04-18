@@ -1,5 +1,6 @@
 import { routes } from "./routes.js";
 import symptoms_service from "./services/symptoms-service.js";
+import formView from "./views/formView.js";
 
 // just a name for a default route, corresponding to one of the routes keys, for when the shit hits the fan
 const defaultRoute = "home";
@@ -15,13 +16,18 @@ function hashchangeHandler() {
     json.then((result)=> routes.diagnosis.view.show(result));
   } */
   // routeName can be undefined if nothing is found, it will use the defaultRoute name
-  /* else{ */const routeName =
+  /* else{ */
+  if(window.location.hash === "#form"){
+    formView.show();
+  }else{
+
+    const routeName =
     Object.keys(routes).find((name) => location.hash === routes[name].hash) ||
     defaultRoute;
 
   location.hash = routes[routeName].hash; 
 
-  loadController(routes[routeName].controller);
+  loadController(routes[routeName].controller);}
  /*  } */
 }
 

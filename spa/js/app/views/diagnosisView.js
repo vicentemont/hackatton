@@ -1,5 +1,6 @@
 
 let diagnosisView = {
+    
 
         show: (jsonFile)=>{
             

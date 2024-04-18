@@ -1,5 +1,6 @@
 import symptoms_service from "../services/symptoms-service.js";
 import { routes } from "../routes.js";
+import formView from "./formView.js";
 
 // the point of separating elements from their handlers is flexibility
 // I may want elements without any handling functions
@@ -7,8 +8,15 @@ import { routes } from "../routes.js";
 export let elements = {};
 const handlers = {};
 export let selectedSymptoms= [];
+let age= null;
+let gender= null;
 
-
+    export function setAge(num){
+    age=num;
+    }
+    export function setGender(gen){
+        gender=gen;
+    }
 
 
 // a function to create a single button with some inner text
@@ -66,7 +74,8 @@ function renderButton(buttonText){
     elements["getDiagnoseButton"] = $(createButton(buttonText));
     elements.app.append(elements["getDiagnoseButton"]);
     elements["getDiagnoseButton"].on('click', () =>{
-        let json= symptoms_service.fetchDiagnosis(selectedSymptoms,"female","45");
+        values =formView.getValues();
+        let json= symptoms_service.fetchDiagnosis(selectedSymptoms,values[1],values[0]);
         json.then((result)=> routes.diagnosis.view.show(result));
     } )
 

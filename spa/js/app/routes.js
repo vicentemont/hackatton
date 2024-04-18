@@ -1,4 +1,6 @@
 import diagnosisView from "./views/diagnosisView.js"
+import formView from "./views/formView.js";
+
 export const routes = {
     // film route
     film: {
@@ -17,5 +19,9 @@ export const routes = {
         hash: "#home",
         view: "home-view",
         controller: "home-controller"
+    },
+    form: {
+        hash:"#form",
+        view: formView
     }
 };

@@ -104,3 +104,9 @@ margin-bottom: 150px;
     background-color:#ec9a29;
     margin: 8px;
 }
+
+#medical-form{
+    margin-top: 200px;
+    align-items:center;
+    justify-content: start;
+}
