@@ -1,37 +1,50 @@
-import symptoms_service from "../services/symptoms-service.js"
 
 let diagnosisView = {
 
-    show: (jasonFile)=>{
-    
-        $("#disease-name").empty();
-        $("#disease-name").append(
-            `${jasonFile.Issue.Name}`
-        );
-        $("#chance").empty();
-        $("#chance").append(
-            `Based on your symptoms, there is a ${jasonFile.Issue.Accuracy} of you having ${jasonFile.Name}!`
-        );
-        $("#icd-name").empty();
-        $("#icd-name").append(
-            `${jasonFile.Issue.IcdName}`
-        );
-        $("#icd-number").empty();
-        $("#icd-number").append(
-            `${jasonFile.Issue.Icd}`
+        show: (jsonFile)=>{
+            
+            console.log("entrou caralho")
+            console.log(jsonFile);
+            
+            $("#app").empty();
+            $("#app").append(`<section class="diagnosis">
+            <div id="disease-name"></div>
+            <div id="chance"></div>
+            <div id="icd-name">Medical Name: </div>
+            <div class="lastRow">
+            
+            <div id="doc-1"> If you are concerned, consider visiting a  </div>
+            </div>
+        
+        </section>`)
+            
+            $("#disease-name").append(
+                `${jsonFile[0].Issue.Name}`
             );
-        $("#doc-1").empty();
-        $("#doc-1").append(
-            `${jasonFile.Specialisation[0].Name}`
-        );
-        $("#doc-2").empty();
+        
+            $("#chance").append(
+                `Based on your symptoms, there is a ${jsonFile[0].Issue.Accuracy} chance of you having a ${jsonFile[0].Issue.Name}!`
+            );
+          
+            $("#icd-name").append(
+                `${jsonFile[0].Issue.IcdName}`
+            );
+            
+         
+           
+            $("#doc-1").append(
+                `${jsonFile[0].Specialisation[0].Name} doctor!`
+            );
+            $("#doc-2").empty();
+            
 
-        if(jasonFile.Specialisation.length() >1){
-        $("#doc-2").append(
-            `${jasonFile.Specialisation[1].Name}`
-        );
-        }
-
+        },
+        bind: (eventName, handler) => {
+            handlers[eventName] = handler;
+        },
+        render:()=> {
+            elements.app = $("#app");
+    
     }
 }
 

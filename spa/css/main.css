@@ -296,7 +296,7 @@ textarea {
 .bg {
     height: 100vh;
     background-size: cover; 
-    background: linear-gradient(141deg, rgb(1, 13, 147) 0%, rgb(12, 0, 56) 50%, rgba(7,0,147,1) 100%) 
+    background-color: #143642;
 }
 
 
