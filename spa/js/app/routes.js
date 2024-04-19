@@ -17,5 +17,10 @@ export const routes = {
         hash: "#home",
         view: "home-view",
         controller: "home-controller"
+    },
+    form: {
+        hash: "#form",
+        view: "form-view",
+        controller: "form-controller"
     }
 };

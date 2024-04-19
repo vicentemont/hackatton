@@ -1,7 +1,8 @@
 import { routes } from "../routes.js";
 import { loadController, start } from "../router.js";
 import { elements } from "./symptoms-view.js";
-import { selectedSymptoms } from "./symptoms-view.js";
+import { clearSymptoms } from "./symptoms-view.js";
+
 
 
 function createHomeScreen(){
@@ -11,12 +12,13 @@ function createHomeScreen(){
 
 function renderButton(){
     $("#logo").on('click',() => {
-        //elements.app.empty(); 
-        start();
+        clearSymptoms();
+        window.location.href = '/#home';
     })
     elements.app.empty(); 
     let home = $(createHomeScreen());
-    elements.app.append(home);
+    elements.app.append(`<div class="instruction">Click start to get your medical checkup!</div>`)
+    elements.app.append(home)
     $(".start-button").on('click', () => {
         if(elements["symptomsCue"]){
 
@@ -32,8 +34,8 @@ function renderButton(){
        // selectedSymptoms = [];
     elements.app.empty();
     delete elements['fetchSymptoms'];
-    location.hash = routes["symptoms"].hash;
-    loadController(routes["symptoms"].controller);
+    location.hash = routes["form"].hash;
+    loadController(routes["form"].controller);
     })
 }
 

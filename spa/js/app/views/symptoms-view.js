@@ -6,10 +6,21 @@ import { routes } from "../routes.js";
 // and I may want handlers that are shared by multiple elements
 export let elements = {};
 const handlers = {};
-export let selectedSymptoms= [];
+let selectedSymptoms = [];
 
+let age = 0;
+let gender = "female";
 
+export function setAge(num){
+    age = num;
+}
+export function setGender(gen){
+    gender = gen;
+}
 
+export function clearSymptoms() {
+    selectedSymptoms = [];
+}
 
 // a function to create a single button with some inner text
 function createButton(text) {
@@ -17,7 +28,7 @@ function createButton(text) {
 }
 
 function createInput(idName) {
-    return `<div id="${idName}" class="container"><input autocomplete="off" type="search" id="searchBar" class="container" placeholder="Search Symptom..."></div>`;
+    return `<div id="${idName}" class="container expanded"><input autocomplete="off" type="search" id="searchBar" class="container" placeholder="Search Symptom..."></div>`;
 }
 
 function createSymptomsCue() {
@@ -62,13 +73,13 @@ function createSuggestions(suggestionsObj) {
     }
 }
 
-function renderButton(buttonText){
+function renderButton(buttonText) {
     elements["getDiagnoseButton"] = $(createButton(buttonText));
     elements.app.append(elements["getDiagnoseButton"]);
-    elements["getDiagnoseButton"].on('click', () =>{
-        let json= symptoms_service.fetchDiagnosis(selectedSymptoms,"female","45");
-        json.then((result)=> routes.diagnosis.view.show(result));
-    } )
+    elements["getDiagnoseButton"].on('click', () => {
+        let json = symptoms_service.fetchDiagnosis(selectedSymptoms, "female", "45");
+        json.then((result) => routes.diagnosis.view.show(result));
+    })
 
     console.log(elements["getDiagnose"]);
 }
@@ -87,6 +98,7 @@ function renderSearchBar(eventName) {
     let suggestions = [];
     // Add event listener for the 'input' event
     elements[eventName].on('input', async function (event) {
+        elements.app.find('#searchSection').nextAll().remove();
         const inputValue = event.target.value;
         console.log(eventName + inputValue);
         try {
@@ -105,6 +117,8 @@ function renderSearchBar(eventName) {
 
     console.log('here2')
     elements.app.append(elements[eventName]);
+    elements.app.append(`<div id="searchSectionDescription">Tell us what you feel and we'll tell you what to do!</div>`);
+
 }
 
 // adds EventListener to each suggestion to search when clicked by user
@@ -121,10 +135,10 @@ function renderSuggestions(suggestionsObj) {
         if (!elements["symptomsCue"] || elements["symptomsCue"].innerHTML === "") {
             console.log("entered here")
             elements["symptomsCue"] = $(createSymptomsCue())
-            
+
             elements.app.prepend(elements["symptomsCue"]);
-            
-           renderButton("Get Diagnose");
+
+            renderButton("Get Diagnose");
 
 
         }
