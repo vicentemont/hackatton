@@ -1,8 +1,305 @@
+.start-button {
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.332);
+}
+
+
+button:hover {
+    filter: brightness(110%);
+}
+
+#medical-form {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    margin-top: 20px;
+}
+
+#medical-form .instruction {
+    position: relative;
+    padding: 10px;
+    margin: 0px;
+    font-size: xx-large;
+    margin-bottom: 90px;
+}
+
+#submit {
+    width: 200px;
+    padding: 10px;
+    background-color: #EC9A29;
+    border-style: none;
+    margin: 20px;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 30px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.332);
+    overflow: hidden;
+    animation: slideUp 1s ease forwards;
+    /* Apply the slideUp animation */
+}
+
+#age,
+#gender {
+    margin: 10px;
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    border-style: solid;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    margin-bottom: 0px;
+    border-color: #cecece;
+    border-width: 2px;
+    background-color: rgb(232, 232, 232);
+    border-style: none;
+
+}
+
+
+
 .container {
     margin: 20px;
 }
 
+.instruction {
+    position: absolute;
+    width: 300px;
+    margin-top: 30px;
+    padding: 30px;
+    padding-top: 10px;
+    font-size: x-large;
+    color: rgba(255, 255, 255, 0.489);
+}
+
+#searchSectionDescription {
+    padding: 30px;
+    padding-top: 10px;
+    font-size: x-large;
+    color: rgba(255, 255, 255, 0.489);
+}
+
 .simple-button {
+    width: 200px;
     padding: 10px;
-    border: 2px solid #4CAF50;
+    background-color: #EC9A29;
+    border-style: none;
+    margin-bottom: 20px;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 30px;
+    position: relative;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.332);
+    overflow: hidden;
+    animation: slideUp 1s ease forwards;
+    /* Apply the slideUp animation */
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(100%);
+        /* Start position: move down by the height of the container */
+    }
+
+    100% {
+        transform: translateY(0);
+        /* End position: move up to the final position */
+    }
+}
+
+
+.main-container {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 230px;
+    height: 100vh;
+}
+
+.symptomsContainer {
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    grid-gap: 10px;
+    grid-auto-flow: dense
+}
+
+#app {
+    padding-top: px;
+    width: 350px;
+    min-height: 450px;
+    background-color: #0F8B8D;
+    border-radius: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.332);
+    overflow: hidden;
+    animation: slideUp 1s ease forwards;
+    /* Apply the slideUp animation */
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(100%);
+        /* Start position: move down by the height of the container */
+    }
+
+    100% {
+        transform: translateY(0);
+        /* End position: move up to the final position */
+    }
+}
+
+.symptom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    /* Ensure the circle shape */
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.332);
+
+}
+
+#searchSection {
+    padding: 20px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0px;
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: white;
+    border-color: #d71b1b;
+    border-width: 3px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.332);
+    max-height: 0;
+    /* Initially set max-height to 0 */
+    transition: max-height 0.5s ease;
+    /* Apply transition effect */
+}
+
+#searchSection.expanded {
+    max-height: 200px;
+    /* Set the max-height to the desired expanded height */
+
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    /* Width of the entire scrollbar */
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Color of the scroll handle */
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Color of the scroll handle on hover */
+}
+
+#searchBar {
+    width: 300px;
+    height: 30px;
+    border-radius: 15px;
+    border-style: solid;
+    padding-left: 10px;
+    margin: 0px;
+    margin-bottom: 0px;
+    border-color: #cecece;
+    border-width: 2px;
+    background-color: rgb(232, 232, 232);
+    border-style: none;
+}
+
+#searchBar:focus {
+    border: red;
+    /* Set the border color to red when focused */
+    /* Add other styles as needed */
+}
+
+
+.suggestion:hover {
+    background-color: #ededed;
+}
+
+.symptomsCue {
+    margin-top: 30px;
+    padding-right: 10px;
+    width: 280px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    font-weight: 500;
+    color: white;
+    font-size: large;
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
+    scrollbar-width: none;
+
+}
+
+
+
+/* Hide the scrollbar */
+.symptomsCue::-webkit-scrollbar {
+    display: none;
+    /* Hide the scrollbar for WebKit (Chrome, Safari, etc.) */
+}
+
+.symptomsCue>* {
+    margin-left: 10px;
+
+    /* Adjust the margin value as needed */
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.332);
+}
+
+.symptomBall {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #ec9a29;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+
+.suggestion {
+    height: 30px;
+    width: 300px;
+    margin: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    /* Change display property to block */
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: white;
+}
+
+#suggestionsContainer {
+    margin-top: 5px;
+}
+
+
+.symptom img {
+    height: 40px;
 }

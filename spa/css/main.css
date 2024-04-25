@@ -296,83 +296,8 @@ textarea {
 .bg {
     height: 100vh;
     background-size: cover; 
-    background: linear-gradient(141deg, rgba(0,5,62,1) 0%, rgba(0,125,157,1) 50%, rgba(7,0,147,1) 100%) 
+    background-color: #143642;
 }
 
-.container{
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);  
-    background: rgb(131,58,180);
-    background: linear-gradient(141deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 75%, rgba(252,176,69,1) 100%); 
-    margin: 30px; 
 
-    
-}
 
-#gameCard {
-    height: 400px;
-    background-color: black;
-    width: 400px;
-    border-radius: 20px; 
-    padding:20px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3); 
-}
-#movieTitle{
-    height: 100px;
-    border-radius: 10px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: white;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
-}
-
-#movieDetails{
-    display: flex;
-    justify-content:flex-start;
-    padding: 0px;
-    flex-wrap:wrap;
-    padding-top:10px;
-    flex-direction:row;
-}
-
-.movieDetail {
-    border-width: 2px;
-    border-style: solid;
-    border-color: white;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
-    height: 100px;
-    width: 100px; /* Adjust width to fit within container */
-    margin: 10px; /* Add margin between items */
-    /* Add margin between rows */
-    
-}
-
-#movieYear {
-
-    height: 100px;
-    width: 100px; /* Adjust width to fit within container */
-    margin: 10px; /* Add margin between items */
-    /* Add margin between rows */
-    
-}
-
-#movieCategory {
-    border-width: 2px;
-    border-style: solid;
-    border-color: white;
-    height: 100px;
-    width: 100px; /* Adjust width to fit within container */
-    margin: 10px; /* Add margin between items */
-    /* Add margin between rows */
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
-}
